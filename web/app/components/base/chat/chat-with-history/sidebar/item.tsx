@@ -5,6 +5,8 @@ import {
 } from 'react'
 import { useHover } from 'ahooks'
 import type { ConversationItem } from '@/models/share'
+import { useThemeContext } from '@/app/components/base/chat/embedded-chatbot/theme/theme-context'
+import { CssTransform } from '@/app/components/base/chat/embedded-chatbot/theme/utils'
 import Operation from '@/app/components/base/chat/chat-with-history/sidebar/operation'
 import cn from '@/utils/classnames'
 
@@ -25,6 +27,7 @@ const Item: FC<ItemProps> = ({
   const ref = useRef(null)
   const isHovering = useHover(ref)
   const isSelected = currentConversationId === item.id
+  const themeBuilder = useThemeContext()
 
   return (
     <div
@@ -32,8 +35,9 @@ const Item: FC<ItemProps> = ({
       key={item.id}
       className={cn(
         'system-sm-medium group flex cursor-pointer rounded-lg p-1 pl-3 text-components-menu-item-text hover:bg-state-base-hover',
-        isSelected && 'bg-state-accent-active text-text-accent hover:bg-state-accent-active',
+        isSelected && 'bg-state-accent-active hover:bg-state-accent-active',
       )}
+      style={isSelected ? CssTransform(themeBuilder?.theme?.textAccentClass ?? '') : {}}
       onClick={() => onChangeConversation(item.id)}
     >
       <div className='grow truncate p-1 pl-0' title={item.name}>{item.name}</div>

@@ -5,7 +5,7 @@ export class Theme {
   public chatColorTheme: string | null
   public chatColorThemeInverted: boolean
 
-  public primaryColor = '#1C64F2'
+  public primaryColor = '#74ABF5'
   public backgroundHeaderColorStyle = 'backgroundImage: linear-gradient(to right, #2563eb, #0ea5e9)'
   public headerBorderBottomStyle = ''
   public colorFontOnHeaderStyle = 'color: white'
@@ -14,6 +14,13 @@ export class Theme {
   public roundedBackgroundColorStyle = 'backgroundColor: rgb(245 248 255)'
   public chatBubbleColorStyle = 'backgroundColor: rgb(225 239 254)'
   public chatBubbleColor = 'rgb(225 239 254)'
+  public textAccentClass = 'text-text-accent'
+
+  // New button styles
+  public buttonAccentTextStyle = 'color: #1C64F2'
+  public buttonPrimaryBgStyle = 'backgroundColor: #1C64F2'
+  public buttonPrimaryTextStyle = 'color: white'
+  public buttonPrimaryBorderStyle = 'borderColor: #1C64F2'
 
   constructor(chatColorTheme: string | null = null, chatColorThemeInverted = false) {
     this.chatColorTheme = chatColorTheme
@@ -24,12 +31,25 @@ export class Theme {
 
   private configCustomColor() {
     if (this.chatColorTheme !== null && this.chatColorTheme !== '') {
-      this.primaryColor = this.chatColorTheme ?? '#1C64F2'
+      this.primaryColor = this.chatColorTheme ?? '#74ABF5'
       this.backgroundHeaderColorStyle = `backgroundColor: ${this.primaryColor}`
       this.backgroundButtonDefaultColorStyle = `backgroundColor: ${this.primaryColor}; color: ${this.colorFontOnHeaderStyle};`
       this.roundedBackgroundColorStyle = `backgroundColor: ${hexToRGBA(this.primaryColor, 0.05)}`
       this.chatBubbleColorStyle = `backgroundColor: ${hexToRGBA(this.primaryColor, 0.15)}`
       this.chatBubbleColor = `${hexToRGBA(this.primaryColor, 0.15)}`
+
+      // Set button styles based on theme color
+      this.buttonAccentTextStyle = `color: ${this.primaryColor}`
+      this.buttonPrimaryBgStyle = this.chatColorThemeInverted
+        ? `backgroundColor: white; borderColor: ${this.primaryColor}`
+        : `backgroundColor: ${this.primaryColor}`
+      this.buttonPrimaryTextStyle = this.chatColorThemeInverted
+        ? `color: ${this.primaryColor}`
+        : 'color: white'
+      this.buttonPrimaryBorderStyle = `borderColor: ${this.primaryColor}`
+
+      // Set text accent style
+      this.textAccentClass = `color: ${this.primaryColor}`
     }
   }
 
@@ -39,6 +59,7 @@ export class Theme {
       this.colorFontOnHeaderStyle = `color: ${this.primaryColor}`
       this.headerBorderBottomStyle = 'borderBottom: 1px solid #ccc'
       this.colorPathOnHeader = this.primaryColor
+      this.textAccentClass = `color: ${this.primaryColor}`
     }
   }
 }

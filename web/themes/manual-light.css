@@ -63,3 +63,24 @@ html[data-theme="light"] {
       rgba(255, 255, 255, 0) 100%);
   --color-line-divider-bg: linear-gradient(90deg, rgba(16, 24, 40, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
 }
+
+/* Add a higher specificity selector to force overrides */
+html[data-theme="light"]:not(#fake-id) {
+  /* Critical styles to override */
+  --color-text-primary: #101828 !important; /* Dark blue */
+  --color-text-secondary: #354052 !important; /* Secondary-foreground */
+  /* --color-text-accent: #74ABF5 !important; /* Accent purple */
+  
+  /* Buttons */
+  /* --color-components-button-primary-bg: #74ABF5 !important; /* Primary blue */
+  /* --color-components-button-primary-bg-hover: #5289ff !important; /* Slightly darker */
+  /* --color-components-button-secondary-accent-text: #74ABF5 !important; /* Primary blue */
+  /* --color-components-main-nav-nav-button-text-active: #74ABF5 !important; /* Primary blue */
+  
+
+  /* Tab Components */
+  --color-components-tab-active: #74ABF5 !important; /* Primary blue */
+  
+  /* Background */
+  --color-background-body: #fafafa !important; /* Off-White */
+}

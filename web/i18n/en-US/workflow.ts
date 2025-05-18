@@ -48,7 +48,7 @@ const translation = {
     maxTreeDepth: 'Maximum limit of {{depth}} nodes per branch',
     needEndNode: 'The End block must be added',
     needAnswerNode: 'The Answer block must be added',
-    workflowProcess: 'Workflow Process',
+    workflowProcess: 'Agent Process',
     notRunning: 'Not running yet',
     previewPlaceholder: 'Enter content in the box below to start debugging the Chatbot',
     effectVarConfirm: {
