@@ -178,7 +178,7 @@ const ChatInputArea = ({
           <FileListInChatInput fileConfig={visionConfig!} />
           <div
             ref={wrapperRef}
-            className='flex items-center justify-between'
+            className='flex flex-col'
           >
             <div className='relative flex w-full grow items-center'>
               <div
@@ -190,7 +190,7 @@ const ChatInputArea = ({
               <Textarea
                 ref={ref => textareaRef.current = ref as any}
                 className={cn(
-                  'body-lg-regular w-full resize-none bg-transparent p-1 leading-6 text-text-tertiary outline-none',
+                  'body-lg-regular min-h-[32px] w-full resize-none bg-transparent p-1 leading-6 text-text-primary outline-none',
                 )}
                 placeholder={t('common.chat.inputPlaceholder') || ''}
                 autoFocus
@@ -211,9 +211,9 @@ const ChatInputArea = ({
                 onDrop={handleDropFile}
               />
             </div>
-            {
-              !isMultipleLine && operation
-            }
+            <div className='mt-1 flex justify-end px-[9px]'>
+              {operation}
+            </div>
           </div>
           {
             showVoiceInput && (
@@ -224,11 +224,6 @@ const ChatInputArea = ({
             )
           }
         </div>
-        {
-          isMultipleLine && (
-            <div className='px-[9px]'>{operation}</div>
-          )
-        }
       </div>
       {showFeatureBar && <FeatureBar showFileUpload={showFileUpload} disabled={featureBarDisabled} onFeatureBarClick={onFeatureBarClick} />}
     </>

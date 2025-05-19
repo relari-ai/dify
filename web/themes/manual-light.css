@@ -83,4 +83,15 @@ html[data-theme="light"]:not(#fake-id) {
   
   /* Background */
   --color-background-body: #fafafa !important; /* Off-White */
+  --color-background-default-burn: #fafafa !important; /* Off-White */
+  --color-background-chatbot-bg: #fafafa !important; /* Off-White */
+
+  /* Chat */
+  --color-chat-input-mask: #fafafa !important; /* Off-White */
+  --color-chatbot-bg: #fafafa !important; /* Off-White */
+  --color-chat-bubble-bg: auto;
+  --color-components-chat-input-border: #10182824 !important; /* Gray */
+
+  /* Sidebar */
+  --color-sidebar-bg: #f2f2f2 !important; 
 }

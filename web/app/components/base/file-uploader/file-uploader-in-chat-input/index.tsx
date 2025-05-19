@@ -3,7 +3,7 @@ import {
   useCallback,
 } from 'react'
 import {
-  RiAttachmentLine,
+  RiAddLine,
 } from '@remixicon/react'
 import FileFromLinkOrLocal from '../file-from-link-or-local'
 import ActionButton from '@/app/components/base/action-button'
@@ -21,9 +21,9 @@ const FileUploaderInChatInput = ({
     return (
       <ActionButton
         size='l'
-        className={cn(open && 'bg-state-base-hover')}
+        className={cn('border border-divider-subtle', open && 'bg-state-base-hover')}
       >
-        <RiAttachmentLine className='h-5 w-5' />
+        <RiAddLine className='h-5 w-5' />
       </ActionButton>
     )
   }, [])

@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import {
+  RiArrowUpLine,
   RiMicLine,
-  RiSendPlane2Fill,
 } from '@remixicon/react'
 import type {
   EnableType,
@@ -49,14 +49,15 @@ const Operation = (
               <ActionButton
                 size='l'
                 onClick={onShowVoiceInput}
+                className='border border-divider-subtle'
               >
-                <RiMicLine className='h-5 w-5' />
+                <RiMicLine className='h-4 w-4' />
               </ActionButton>
             )
           }
         </div>
         <Button
-          className='ml-3 w-8 px-0'
+          className='ml-1 w-8 rounded-full px-0'
           variant='primary'
           onClick={onSend}
           style={
@@ -67,7 +68,7 @@ const Operation = (
               : {}
           }
         >
-          <RiSendPlane2Fill className='h-4 w-4' />
+          <RiArrowUpLine className='h-4 w-4' />
         </Button>
       </div>
     </div>

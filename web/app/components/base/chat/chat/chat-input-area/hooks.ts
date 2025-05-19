@@ -19,12 +19,20 @@ export const useTextAreaHeight = () => {
       const { height: textareaHeight } = textareaElement.getBoundingClientRect()
       const { width: textValueWidth } = textValueRef.current.getBoundingClientRect()
       const { width: holdSpaceWidth } = holdSpaceRef.current.getBoundingClientRect()
-      if (textareaHeight > 32) {
+
+      const singleLineHeight = 32 // Assuming this is your single line height
+      const minHeight = singleLineHeight * 2 // Minimum height for 2 rows
+
+      // Only set to multiple lines if we exceed the minimum height
+      if (textareaHeight > minHeight) {
         setIsMultipleLine(true)
       }
       else {
+        // For the initial state and when content is short, check if we need multiple lines
+        // based on width constraints
         if (textValueWidth + holdSpaceWidth >= wrapperWidth)
           setIsMultipleLine(true)
+
         else
           setIsMultipleLine(false)
       }

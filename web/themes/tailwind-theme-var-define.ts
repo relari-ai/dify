@@ -736,5 +736,7 @@ const vars = {
   'saas-background': 'var(--color-saas-background)',
   'saas-pricing-grid-bg': 'var(--color-saas-pricing-grid-bg)',
 
+  'sidebar-bg': 'var(--color-sidebar-bg)',
+
 }
 export default vars
