@@ -37,7 +37,7 @@ const Item: FC<ItemProps> = ({
         'system-md-regular group flex cursor-pointer rounded-lg p-1 pl-3 text-components-menu-item-text hover:bg-state-base-hover',
         isSelected && 'bg-state-base-hover hover:bg-state-base-hover',
       )}
-      style={isSelected ? CssTransform(themeBuilder?.theme?.textAccentClass ?? '') : {}}
+      style={isSelected ? CssTransform(themeBuilder?.theme?.textAccentClass || '') : {}}
       onClick={() => onChangeConversation(item.id)}
     >
       <div className='grow truncate p-1 pl-0' title={item.name}>{item.name}</div>

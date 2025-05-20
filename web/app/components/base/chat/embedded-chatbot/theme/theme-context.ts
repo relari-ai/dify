@@ -31,8 +31,10 @@ export class Theme {
   }
 
   private configCustomColor() {
+    // Always set primary color with default fallback
+    this.primaryColor = this.chatColorTheme ?? '#74ABF5'
+
     if (this.chatColorTheme !== null && this.chatColorTheme !== '') {
-      this.primaryColor = this.chatColorTheme ?? '#74ABF5'
       this.backgroundHeaderColorStyle = `backgroundColor: ${this.primaryColor}`
       this.backgroundButtonDefaultColorStyle = `backgroundColor: ${this.primaryColor}; color: ${this.colorFontOnHeaderStyle};`
       // this.roundedBackgroundColorStyle = `backgroundColor: ${hexToRGBA(this.primaryColor, 0.05)}`
@@ -48,13 +50,13 @@ export class Theme {
         ? `color: ${this.primaryColor}`
         : 'color: white'
       this.buttonPrimaryBorderStyle = `borderColor: ${this.primaryColor}`
+    }
 
-      if (typeof window !== 'undefined') {
-        const theme = document.documentElement.getAttribute('data-theme')
-        const isDark = theme === 'dark'
-        this.chatBubbleColorStyle = `backgroundColor: ${isDark ? '#2A2A2D' : '#f4f4f4'}`
-        this.textAccentClass = `color: ${isDark ? '#f4f4f4' : this.primaryColor}`
-      }
+    // Initial theme values will be set in updateThemeBasedValues
+    if (typeof window !== 'undefined') {
+      const theme = document.documentElement.getAttribute('data-theme')
+      const isDark = theme === 'dark'
+      this.updateThemeBasedValues(isDark)
     }
   }
 
@@ -69,10 +71,9 @@ export class Theme {
   }
 
   public updateThemeBasedValues(isDark: boolean) {
-    if (this.chatColorTheme !== null && this.chatColorTheme !== '') {
-      this.chatBubbleColorStyle = `backgroundColor: ${isDark ? '#2A2A2D' : '#f4f4f4'}`
-      this.textAccentClass = `color: ${isDark ? '#f4f4f4' : this.primaryColor}`
-    }
+    // Set theme-based styles regardless of custom theme
+    this.chatBubbleColorStyle = `backgroundColor: ${isDark ? '#2A2A2D' : '#f4f4f4'}`
+    this.textAccentClass = `color: ${isDark ? '#f4f4f4' : this.primaryColor}`
   }
 }
 

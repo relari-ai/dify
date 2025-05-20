@@ -13,16 +13,21 @@ export function hexToRGBA(hex: string, opacity: number): string {
  * Since strings cannot be directly assigned to the 'style' attribute in JSX,
  * this method transforms the string into an object representation of the styles.
  */
-export function CssTransform(cssString: string): object {
-  if (cssString.length === 0)
+export function CssTransform(cssString: string | undefined): object {
+  if (!cssString || cssString.length === 0)
     return {}
 
   const style: object = {}
   const propertyValuePairs = cssString.split(';')
   for (const pair of propertyValuePairs) {
     if (pair.trim().length > 0) {
-      const [property, value] = pair.split(':')
-      Object.assign(style, { [property.trim()]: value.trim() })
+      const parts = pair.split(':')
+      if (parts.length >= 2) {
+        const property = parts[0]
+        const value = parts[1]
+        if (property && value)
+          Object.assign(style, { [property.trim()]: value.trim() })
+      }
     }
   }
   return style

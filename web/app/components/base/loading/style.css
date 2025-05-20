@@ -1,26 +1,13 @@
-.spin-animation path {
-    animation: custom 2s linear infinite;
+.spin-animation {
+    animation: spin 1s linear infinite;
 }
 
-@keyframes custom {
-    0% {
-        opacity: 0;
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
     }
-
-    25% {
-        opacity: 0.1;
-    }
-
-    50% {
-        opacity: 0.2;
-    }
-
-    75% {
-        opacity: 0.5;
-    }
-
-    100% {
-        opacity: 1;
+    to {
+        transform: rotate(360deg);
     }
 }
 
