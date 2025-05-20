@@ -354,15 +354,13 @@ export const useChatWithHistory = (installedAppInfo?: InstalledApp) => {
 
   const handlePinConversation = useCallback(async (conversationId: string) => {
     await pinConversation(isInstalledApp, appId, conversationId)
-    notify({ type: 'success', message: t('common.api.success') })
     handleUpdateConversationList()
-  }, [isInstalledApp, appId, notify, t, handleUpdateConversationList])
+  }, [isInstalledApp, appId, handleUpdateConversationList])
 
   const handleUnpinConversation = useCallback(async (conversationId: string) => {
     await unpinConversation(isInstalledApp, appId, conversationId)
-    notify({ type: 'success', message: t('common.api.success') })
     handleUpdateConversationList()
-  }, [isInstalledApp, appId, notify, t, handleUpdateConversationList])
+  }, [isInstalledApp, appId, handleUpdateConversationList])
 
   const [conversationDeleting, setConversationDeleting] = useState(false)
   const handleDeleteConversation = useCallback(async (

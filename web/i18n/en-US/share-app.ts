@@ -14,7 +14,7 @@ const translation = {
     newChatDefaultName: 'New conversation',
     resetChat: 'Start new chat',
     viewChatSettings: 'View chat settings',
-    poweredBy: 'Powered by',
+    poweredBy: 'Built with',
     prompt: 'Prompt',
     privatePromptConfigTitle: 'Conversation settings',
     publicPromptConfigTitle: 'Initial Prompt',

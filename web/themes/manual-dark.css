@@ -63,3 +63,28 @@ html[data-theme="dark"] {
       rgba(0, 0, 0, 0) 100%);
   --color-line-divider-bg: linear-gradient(90deg, rgba(200, 206, 218, 0.14) 0%, rgba(0, 0, 0, 0) 100%);
 }
+
+/* Add a higher specificity selector to force overrides */
+html[data-theme="dark"]:not(#fake-id) {
+  /* Critical styles to override */
+  --color-text-primary: #F9FAFB !important; /* Light text for dark mode */
+  --color-text-secondary: #E5E7EB !important; /* Secondary light text */
+  
+  /* Tab Components */
+  --color-components-tab-active: #74ABF5 !important; /* Primary blue - keeping same accent color */
+  
+  /* Background */
+  --color-background-body: #1D1D20 !important; /* Dark background */
+  --color-background-default-burn: #1D1D20 !important; /* Dark background */
+  --color-background-chatbot-bg: #1D1D20 !important; /* Dark background */
+
+  /* Chat */
+  --color-chat-input-mask: #1D1D20 !important; /* Dark background */
+  --color-chatbot-bg: #1D1D20 !important; /* Dark background */
+  --color-chat-bubble-bg: #2A2A2D !important; /* Darker shade for chat bubbles */
+  --color-components-chat-input-border: #F9FAFB24 !important; /* Light gray with opacity */
+
+  /* Sidebar */
+  --color-sidebar-bg: #222225 !important; /* Slightly lighter dark background */
+}
+

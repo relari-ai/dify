@@ -69,7 +69,7 @@ html[data-theme="light"]:not(#fake-id) {
   /* Critical styles to override */
   --color-text-primary: #101828 !important; /* Dark blue */
   --color-text-secondary: #354052 !important; /* Secondary-foreground */
-  /* --color-text-accent: #74ABF5 !important; /* Accent purple */
+  --color-text-accent: #3344DD !important; /* Accent purple
   
   /* Buttons */
   /* --color-components-button-primary-bg: #74ABF5 !important; /* Primary blue */
@@ -89,7 +89,7 @@ html[data-theme="light"]:not(#fake-id) {
   /* Chat */
   --color-chat-input-mask: #fafafa !important; /* Off-White */
   --color-chatbot-bg: #fafafa !important; /* Off-White */
-  --color-chat-bubble-bg: auto;
+  --color-chat-bubble-bg: #f4f4f4 !important;
   --color-components-chat-input-border: #10182824 !important; /* Gray */
 
   /* Sidebar */

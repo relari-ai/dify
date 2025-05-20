@@ -11,7 +11,6 @@ import {
 import { useEmbeddedChatbot } from './hooks'
 import { isDify } from './utils'
 import { useThemeContext } from './theme/theme-context'
-import { CssTransform } from './theme/utils'
 import { checkOrSetAccessToken } from '@/app/components/share/utils'
 import AppUnavailable from '@/app/components/base/app-unavailable'
 import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
@@ -19,7 +18,7 @@ import Loading from '@/app/components/base/loading'
 import LogoHeader from '@/app/components/base/logo/logo-embedded-chat-header'
 import Header from '@/app/components/base/chat/embedded-chatbot/header'
 import ChatWrapper from '@/app/components/base/chat/embedded-chatbot/chat-wrapper'
-import DifyLogo from '@/app/components/base/logo/dify-logo'
+import NuviLogo from '@/app/components/base/logo/nuvi-logo'
 import cn from '@/utils/classnames'
 
 const Chatbot = () => {
@@ -47,7 +46,7 @@ const Chatbot = () => {
       if (customConfig)
         document.title = `${site.title}`
       else
-        document.title = `${site.title} - Powered by Nuvi`
+        document.title = `${site.title} - Built with Nuvi`
     }
   }, [site, customConfig, themeBuilder])
 
@@ -85,9 +84,9 @@ const Chatbot = () => {
       <div
         className={cn(
           'flex flex-col rounded-2xl border border-components-panel-border-subtle',
-          isMobile ? 'h-[calc(100vh_-_60px)] border-[0.5px] border-components-panel-border shadow-xs' : 'h-[100vh] bg-chatbot-bg',
+          isMobile ? 'h-[calc(100vh_-_60px)] border-[0.5px] border-components-panel-border' : 'h-[100vh] bg-chatbot-bg',
         )}
-        style={isMobile ? Object.assign({}, CssTransform(themeBuilder?.theme?.backgroundHeaderColorStyle ?? '')) : {}}
+        // style={isMobile ? Object.assign({}, CssTransform(themeBuilder?.theme?.backgroundHeaderColorStyle ?? '')) : {}}
       >
         <Header
           isMobile={isMobile}
@@ -118,7 +117,7 @@ const Chatbot = () => {
                 <img src={appData?.custom_config?.replace_webapp_logo} alt='logo' className='block h-5 w-auto' />
               )}
               {!appData?.custom_config?.replace_webapp_logo && (
-                <DifyLogo size='small' />
+                <NuviLogo size='small' />
               )}
             </div>
           )}

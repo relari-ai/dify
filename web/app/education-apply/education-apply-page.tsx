@@ -95,7 +95,7 @@ const EducationApplyAge = () => {
         >
         </div>
         <div className='mt-[-349px] box-content flex h-7 items-center justify-between p-6'>
-          <DifyLogo size='large' style='monochromeWhite' />
+          <DifyLogo size='large' style='dark' />
         </div>
         <div className='mx-auto max-w-[720px] px-8 pb-[180px]'>
           <div className='mb-2 flex h-[192px] flex-col justify-end pb-4 pt-3 text-text-primary-on-surface'>

@@ -5,8 +5,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import {
   RiChatNewLine,
-  RiExpandRightLine,
-  RiLayoutLeft2Line,
+  RiLayoutLeftLine,
 } from '@remixicon/react'
 import { useChatWithHistoryContext } from '../context'
 import ActionButton from '@/app/components/base/action-button'
@@ -14,7 +13,7 @@ import List from '@/app/components/base/chat/chat-with-history/sidebar/list'
 import MenuDropdown from '@/app/components/share/text-generation/menu-dropdown'
 import Confirm from '@/app/components/base/confirm'
 import RenameModal from '@/app/components/base/chat/chat-with-history/sidebar/rename-modal'
-import DifyLogo from '@/app/components/base/logo/dify-logo'
+import NuviLogo from '@/app/components/base/logo/nuvi-logo'
 import type { ConversationItem } from '@/models/share'
 import cn from '@/utils/classnames'
 
@@ -93,14 +92,14 @@ const Sidebar = ({ isPanel }: Props) => {
         </div> */}
         {/* <div className={cn('system-md-semibold grow truncate text-text-secondary')}>{appData?.site.title}</div> */}
 
-        {!isMobile && isSidebarCollapsed && (
+        {/* {!isMobile && isSidebarCollapsed && (
           <ActionButton size='l' onClick={() => handleSidebarCollapse(false)}>
             <RiExpandRightLine className='h-[18px] w-[18px]' />
           </ActionButton>
-        )}
+        )} */}
         {!isMobile && !isSidebarCollapsed && (
           <ActionButton size='l' onClick={() => handleSidebarCollapse(true)}>
-            <RiLayoutLeft2Line className='h-[18px] w-[18px]' />
+            <RiLayoutLeftLine className='h-[18px] w-[18px]' />
           </ActionButton>
         )}
         <ActionButton size='l' disabled={isResponding} onClick={handleNewConversation} className='ml-auto'>
@@ -145,12 +144,12 @@ const Sidebar = ({ isPanel }: Props) => {
             <div className={cn(
               'flex shrink-0 items-center gap-1.5 px-1',
             )}>
-              <div className='system-2xs-medium-uppercase text-text-tertiary'>{t('share.chat.poweredBy')}</div>
+              <div className='system-xs-regular uppercase text-text-tertiary'>{t('share.chat.poweredBy')}</div>
               {appData?.custom_config?.replace_webapp_logo && (
-                <img src={appData?.custom_config?.replace_webapp_logo} alt='logo' className='block h-5 w-auto' />
+                <img src={appData?.custom_config?.replace_webapp_logo} alt='logo' className='-mt-0.5 block h-4 w-auto' />
               )}
               {!appData?.custom_config?.replace_webapp_logo && (
-                <DifyLogo size='small' />
+                <NuviLogo size='small' />
               )}
             </div>
           )}

@@ -48,8 +48,8 @@ const Item: FC<ItemProps> = ({
             isPinned={!!isPin}
             isItemHovering={isHovering}
             togglePin={() => onOperate(isPin ? 'unpin' : 'pin', item)}
-            isShowDelete
-            isShowRenameConversation
+            isShowDelete={false}
+            isShowRenameConversation={false}
             onRenameConversation={() => onOperate('rename', item)}
             onDelete={() => onOperate('delete', item)}
           />

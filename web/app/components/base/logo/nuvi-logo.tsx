@@ -7,7 +7,7 @@ import useTheme from '@/hooks/use-theme'
 export type LogoStyle = 'default' | 'dark'
 
 export const logoPathMap: Record<LogoStyle, string> = {
-  default: '/logo/logo.svg',
+  default: '/logo/logo-color.svg',
   dark: '/logo/logo-dark.svg',
 }
 
@@ -19,13 +19,13 @@ export const logoSizeMap: Record<LogoSize, string> = {
   small: 'w-9 h-4',
 }
 
-type DifyLogoProps = {
+type NuviLogoProps = {
   style?: LogoStyle
   size?: LogoSize
   className?: string
 }
 
-const DifyLogo: FC<DifyLogoProps> = ({
+const NuviLogo: FC<NuviLogoProps> = ({
   style = 'default',
   size = 'medium',
   className,
@@ -42,4 +42,4 @@ const DifyLogo: FC<DifyLogoProps> = ({
   )
 }
 
-export default DifyLogo
+export default NuviLogo

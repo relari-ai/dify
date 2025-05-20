@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next'
 import Modal from '@/app/components/base/modal'
 import Button from '@/app/components/base/button'
 import Input from '@/app/components/base/input'
+import { useThemeContext } from '@/app/components/base/chat/embedded-chatbot/theme/theme-context'
+import { CssTransform } from '@/app/components/base/chat/embedded-chatbot/theme/utils'
 
 export type IRenameModalProps = {
   isShow: boolean
@@ -23,6 +25,7 @@ const RenameModal: FC<IRenameModalProps> = ({
 }) => {
   const { t } = useTranslation()
   const [tempName, setTempName] = useState(name)
+  const themeBuilder = useThemeContext()
 
   return (
     <Modal
@@ -39,7 +42,7 @@ const RenameModal: FC<IRenameModalProps> = ({
 
       <div className='mt-10 flex justify-end'>
         <Button className='mr-2 shrink-0' onClick={onClose}>{t('common.operation.cancel')}</Button>
-        <Button variant='primary' className='shrink-0' onClick={() => onSave(tempName)} loading={saveLoading}>{t('common.operation.save')}</Button>
+        <Button variant='primary' className='shrink-0' style={CssTransform(themeBuilder?.theme?.buttonPrimaryBgStyle ?? '')} onClick={() => onSave(tempName)} loading={saveLoading}>{t('common.operation.save')}</Button>
       </div>
     </Modal>
   )

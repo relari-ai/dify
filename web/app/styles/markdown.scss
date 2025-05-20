@@ -61,8 +61,8 @@
 
 .markdown-body a:hover {
   position: relative;
-  color: var(--color-text-accent-secondary);
-  text-decoration-color: var(--color-text-accent-secondary);
+  color: var(--color-text-accent);
+  opacity: 0.85;
   text-decoration: underline;
 }
 

@@ -49,7 +49,7 @@ const ChatWithHistory: FC<ChatWithHistoryProps> = ({
       if (customConfig)
         document.title = `${site.title}`
       else
-        document.title = `${site.title} - Powered by Nuvi`
+        document.title = `${site.title} - Built with Nuvi`
     }
   }, [site, customConfig, themeBuilder])
 

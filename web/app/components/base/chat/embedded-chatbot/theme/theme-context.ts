@@ -1,4 +1,6 @@
 import { createContext, useContext } from 'use-context-selector'
+import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
 
 export class Theme {
   public chatColorTheme: string | null
@@ -47,8 +49,12 @@ export class Theme {
         : 'color: white'
       this.buttonPrimaryBorderStyle = `borderColor: ${this.primaryColor}`
 
-      // Set text accent style
-      this.textAccentClass = `color: ${this.primaryColor}`
+      if (typeof window !== 'undefined') {
+        const theme = document.documentElement.getAttribute('data-theme')
+        const isDark = theme === 'dark'
+        this.chatBubbleColorStyle = `backgroundColor: ${isDark ? '#2A2A2D' : '#f4f4f4'}`
+        this.textAccentClass = `color: ${isDark ? '#f4f4f4' : this.primaryColor}`
+      }
     }
   }
 
@@ -59,6 +65,13 @@ export class Theme {
       this.headerBorderBottomStyle = 'borderBottom: 1px solid #ccc'
       this.colorPathOnHeader = this.primaryColor
       this.textAccentClass = `color: ${this.primaryColor}`
+    }
+  }
+
+  public updateThemeBasedValues(isDark: boolean) {
+    if (this.chatColorTheme !== null && this.chatColorTheme !== '') {
+      this.chatBubbleColorStyle = `backgroundColor: ${isDark ? '#2A2A2D' : '#f4f4f4'}`
+      this.textAccentClass = `color: ${isDark ? '#f4f4f4' : this.primaryColor}`
     }
   }
 }
@@ -92,4 +105,16 @@ export class ThemeBuilder {
 }
 
 const ThemeContext = createContext<ThemeBuilder>(new ThemeBuilder())
-export const useThemeContext = () => useContext(ThemeContext)
+
+export const useThemeContext = () => {
+  const themeBuilder = useContext(ThemeContext)
+  const { resolvedTheme } = useTheme()
+  const [isDark, setIsDark] = useState(resolvedTheme === 'dark')
+
+  useEffect(() => {
+    setIsDark(resolvedTheme === 'dark')
+    themeBuilder.theme?.updateThemeBasedValues(resolvedTheme === 'dark')
+  }, [resolvedTheme, themeBuilder.theme])
+
+  return themeBuilder
+}
