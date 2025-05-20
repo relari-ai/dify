@@ -4,14 +4,12 @@ import {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
-  RiEditBoxLine,
+  RiChatNewLine,
   RiExpandRightLine,
   RiLayoutLeft2Line,
 } from '@remixicon/react'
 import { useChatWithHistoryContext } from '../context'
-import AppIcon from '@/app/components/base/app-icon'
 import ActionButton from '@/app/components/base/action-button'
-import Button from '@/app/components/base/button'
 import List from '@/app/components/base/chat/chat-with-history/sidebar/list'
 import MenuDropdown from '@/app/components/share/text-generation/menu-dropdown'
 import Confirm from '@/app/components/base/confirm'
@@ -79,12 +77,12 @@ const Sidebar = ({ isPanel }: Props) => {
   return (
     <div className={cn(
       'flex w-full grow flex-col',
-      isPanel && 'rounded-xl border-[0.5px] border-components-panel-border-subtle bg-components-panel-bg shadow-lg',
+      isPanel && 'rounded-xl border-[0.5px] border-components-panel-border-subtle bg-components-panel-bg',
     )}>
       <div className={cn(
         'flex shrink-0 items-center gap-3 p-3 pr-2',
       )}>
-        <div className='shrink-0'>
+        {/* <div className='shrink-0'>
           <AppIcon
             size='large'
             iconType={appData?.site.icon_type}
@@ -92,8 +90,9 @@ const Sidebar = ({ isPanel }: Props) => {
             background={appData?.site.icon_background}
             imageUrl={appData?.site.icon_url}
           />
-        </div>
-        <div className={cn('system-md-semibold grow truncate text-text-secondary')}>{appData?.site.title}</div>
+        </div> */}
+        {/* <div className={cn('system-md-semibold grow truncate text-text-secondary')}>{appData?.site.title}</div> */}
+
         {!isMobile && isSidebarCollapsed && (
           <ActionButton size='l' onClick={() => handleSidebarCollapse(false)}>
             <RiExpandRightLine className='h-[18px] w-[18px]' />
@@ -104,13 +103,16 @@ const Sidebar = ({ isPanel }: Props) => {
             <RiLayoutLeft2Line className='h-[18px] w-[18px]' />
           </ActionButton>
         )}
+        <ActionButton size='l' disabled={isResponding} onClick={handleNewConversation} className='ml-auto'>
+          <RiChatNewLine className='h-[18px] w-[18px]' />
+        </ActionButton>
       </div>
-      <div className='shrink-0 px-3 py-4'>
+      {/* <div className='shrink-0 px-3 py-4'>
         <Button variant='secondary-accent' disabled={isResponding} className='w-full justify-center' onClick={handleNewConversation}>
-          <RiEditBoxLine className='mr-1 h-4 w-4' />
+          <RiChatNewLine className='mr-1 h-4 w-4' />
           {t('share.chat.newChat')}
         </Button>
-      </div>
+      </div> */}
       <div className='h-0 grow space-y-2 overflow-y-auto px-3 pt-4'>
         {/* pinned list */}
         {!!pinnedConversationList.length && (
@@ -127,7 +129,7 @@ const Sidebar = ({ isPanel }: Props) => {
         )}
         {!!conversationList.length && (
           <List
-            title={(pinnedConversationList.length && t('share.chat.unpinnedTitle')) || ''}
+            title={t('share.chat.unpinnedTitle')}
             list={conversationList}
             onChangeConversation={handleChangeConversation}
             onOperate={handleOperate}

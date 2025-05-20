@@ -3,7 +3,7 @@ import {
   useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
-import { RiUploadCloud2Line } from '@remixicon/react'
+import { RiUploadLine } from '@remixicon/react'
 import FileInput from '../file-input'
 import { useFile } from '../hooks'
 import { useStore } from '../store'
@@ -16,6 +16,8 @@ import {
 import Button from '@/app/components/base/button'
 import type { FileUpload } from '@/app/components/base/features/types'
 import cn from '@/utils/classnames'
+import { useThemeContext } from '@/app/components/base/chat/embedded-chatbot/theme/theme-context'
+import { CssTransform } from '@/app/components/base/chat/embedded-chatbot/theme/utils'
 
 type FileFromLinkOrLocalProps = {
   showFromLink?: boolean
@@ -37,6 +39,21 @@ const FileFromLinkOrLocal = ({
   const { handleLoadFileFromLink } = useFile(fileConfig)
   const disabled = !!fileConfig.number_limits && files.length >= fileConfig.number_limits
 
+  const getUploadText = () => {
+    const baseText = t('common.fileUploader.uploadFromComputer')
+    const hasImages = fileConfig.allowed_file_types?.includes('image')
+    const hasFiles = fileConfig.enabled && fileConfig.allowed_file_types && fileConfig.allowed_file_types.length > 0
+
+    if (hasImages && hasFiles)
+      return `${baseText} images and files`
+     else if (hasImages)
+      return `${baseText} images`
+     else if (hasFiles)
+      return `${baseText} files`
+
+    return baseText
+  }
+
   const handleSaveUrl = () => {
     if (!url)
       return
@@ -48,6 +65,8 @@ const FileFromLinkOrLocal = ({
     handleLoadFileFromLink(url)
     setUrl('')
   }
+
+  const themeBuilder = useThemeContext()
 
   return (
     <PortalToFollowElem
@@ -84,6 +103,7 @@ const FileFromLinkOrLocal = ({
                     variant='primary'
                     disabled={!url || disabled}
                     onClick={handleSaveUrl}
+                    style={CssTransform(themeBuilder?.theme?.buttonPrimaryBgStyle ?? '')}
                   >
                     {t('common.operation.ok')}
                   </Button>
@@ -113,9 +133,10 @@ const FileFromLinkOrLocal = ({
                 className='relative w-full'
                 variant='secondary-accent'
                 disabled={disabled}
+                style={CssTransform(themeBuilder?.theme?.textAccentClass ?? '')}
               >
-                <RiUploadCloud2Line className='mr-1 h-4 w-4' />
-                {t('common.fileUploader.uploadFromComputer')}
+                <RiUploadLine className='mr-1 h-4 w-4' />
+                {getUploadText()}
                 <FileInput fileConfig={fileConfig} />
               </Button>
             )

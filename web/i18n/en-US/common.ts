@@ -630,7 +630,7 @@ const translation = {
     imageUpload: 'Image Upload',
   },
   fileUploader: {
-    uploadFromComputer: 'Local upload',
+    uploadFromComputer: 'Upload',
     pasteFileLink: 'Paste file link',
     pasteFileLinkInputPlaceholder: 'Enter URL...',
     uploadFromComputerReadError: 'File reading failed, please try again.',

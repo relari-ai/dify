@@ -2,6 +2,7 @@ import { memo } from 'react'
 import {
   RiArrowUpLine,
   RiMicLine,
+  RiSquareFill,
 } from '@remixicon/react'
 import type {
   EnableType,
@@ -18,6 +19,8 @@ type OperationProps = {
   speechToTextConfig?: EnableType
   onShowVoiceInput?: () => void
   onSend: () => void
+  onStopResponding?: () => void
+  isResponding?: boolean
   theme?: Theme | null
 }
 const Operation = (
@@ -27,6 +30,8 @@ const Operation = (
     speechToTextConfig,
     onShowVoiceInput,
     onSend,
+    onStopResponding,
+    isResponding,
     theme,
   }: OperationProps & {
     ref: React.RefObject<HTMLDivElement>;
@@ -57,9 +62,7 @@ const Operation = (
           }
         </div>
         <Button
-          className='ml-1 w-8 rounded-full px-0'
           variant='primary'
-          onClick={onSend}
           style={
             theme
               ? {
@@ -67,8 +70,17 @@ const Operation = (
               }
               : {}
           }
+          className={cn(
+            'ml-1 w-8 rounded-full px-0',
+            theme && 'hover:opacity-85',
+          )}
+          onClick={isResponding ? onStopResponding : onSend}
         >
-          <RiArrowUpLine className='h-4 w-4' />
+          {isResponding ? (
+            <RiSquareFill className='h-3 w-3' />
+          ) : (
+            <RiArrowUpLine className='h-4 w-4' />
+          )}
         </Button>
       </div>
     </div>

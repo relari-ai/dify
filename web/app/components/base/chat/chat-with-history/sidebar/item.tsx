@@ -34,15 +34,15 @@ const Item: FC<ItemProps> = ({
       ref={ref}
       key={item.id}
       className={cn(
-        'system-sm-medium group flex cursor-pointer rounded-lg p-1 pl-3 text-components-menu-item-text hover:bg-state-base-hover',
-        isSelected && 'bg-state-accent-active hover:bg-state-accent-active',
+        'system-md-regular group flex cursor-pointer rounded-lg p-1 pl-3 text-components-menu-item-text hover:bg-state-base-hover',
+        isSelected && 'bg-state-base-hover hover:bg-state-base-hover',
       )}
       style={isSelected ? CssTransform(themeBuilder?.theme?.textAccentClass ?? '') : {}}
       onClick={() => onChangeConversation(item.id)}
     >
       <div className='grow truncate p-1 pl-0' title={item.name}>{item.name}</div>
       {item.id !== '' && (
-        <div className='shrink-0' onClick={e => e.stopPropagation()}>
+        <div className='flex shrink-0 items-center' onClick={e => e.stopPropagation()}>
           <Operation
             isActive={isSelected}
             isPinned={!!isPin}

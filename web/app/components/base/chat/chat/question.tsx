@@ -13,11 +13,10 @@ import type { ChatItem } from '../types'
 import type { Theme } from '../embedded-chatbot/theme/theme-context'
 import { CssTransform } from '../embedded-chatbot/theme/utils'
 import ContentSwitch from './content-switch'
-import { User } from '@/app/components/base/icons/src/public/avatar'
 import { Markdown } from '@/app/components/base/markdown'
 import { FileList } from '@/app/components/base/file-uploader'
 import ActionButton from '../../action-button'
-import { RiClipboardLine, RiEditLine } from '@remixicon/react'
+import { RiEditBoxLine, RiFileCopyLine } from '@remixicon/react'
 import Toast from '../../toast'
 import copy from 'copy-to-clipboard'
 import { useTranslation } from 'react-i18next'
@@ -98,7 +97,7 @@ const Question: FC<QuestionProps> = ({
 
   return (
     <div className='mb-2 flex justify-end last:mb-0'>
-      <div className={cn('group relative mr-4 flex max-w-full items-start pl-14', isEditing && 'flex-1')}>
+      <div className={cn('group relative flex max-w-full items-start pl-14', isEditing && 'flex-1')}>
         <div className={cn('mr-2 gap-1', isEditing ? 'hidden' : 'flex')}>
           <div
             className="absolute hidden gap-0.5 rounded-[10px] border-[0.5px] border-components-actionbar-border bg-components-actionbar-bg p-0.5 shadow-md backdrop-blur-sm group-hover:flex"
@@ -108,16 +107,16 @@ const Question: FC<QuestionProps> = ({
               copy(content)
               Toast.notify({ type: 'success', message: t('common.actionMsg.copySuccessfully') })
             }}>
-              <RiClipboardLine className='h-4 w-4' />
+              <RiFileCopyLine className='h-4 w-4' />
             </ActionButton>
             {enableEdit && <ActionButton onClick={handleEdit}>
-              <RiEditLine className='h-4 w-4' />
+              <RiEditBoxLine className='h-4 w-4' />
             </ActionButton>}
           </div>
         </div>
         <div
           ref={contentRef}
-          className='w-full rounded-2xl bg-[#D1E9FF]/50 px-4 py-3 text-sm text-gray-900'
+          className='w-full rounded-3xl bg-[#D1E9FF]/50 px-4 py-2 text-sm text-gray-900'
           style={theme?.chatBubbleColorStyle ? CssTransform(theme.chatBubbleColorStyle) : {}}
         >
           {
@@ -162,7 +161,7 @@ const Question: FC<QuestionProps> = ({
         </div>
         <div className='mt-1 h-[18px]' />
       </div>
-      <div className='h-10 w-10 shrink-0'>
+      {/* <div className='h-10 w-10 shrink-0'>
         {
           questionIcon || (
             <div className='h-full w-full rounded-full border-[0.5px] border-black/5'>
@@ -170,7 +169,7 @@ const Question: FC<QuestionProps> = ({
             </div>
           )
         }
-      </div>
+      </div> */}
     </div>
   )
 }

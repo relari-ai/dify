@@ -36,6 +36,7 @@ type ChatInputAreaProps = {
   visionConfig?: FileUpload
   speechToTextConfig?: EnableType
   onSend?: OnSend
+  onStopResponding?: () => void
   inputs?: Record<string, any>
   inputsForm?: InputForm[]
   theme?: Theme | null
@@ -50,6 +51,7 @@ const ChatInputArea = ({
   visionConfig,
   speechToTextConfig = { enabled: true },
   onSend,
+  onStopResponding,
   inputs = {},
   inputsForm = [],
   theme,
@@ -161,6 +163,8 @@ const ChatInputArea = ({
       speechToTextConfig={speechToTextConfig}
       onShowVoiceInput={handleShowVoiceInput}
       onSend={handleSend}
+      onStopResponding={onStopResponding}
+      isResponding={isResponding}
       theme={theme}
     />
   )
@@ -169,12 +173,12 @@ const ChatInputArea = ({
     <>
       <div
         className={cn(
-          'relative z-10 rounded-xl border border-components-chat-input-border bg-components-panel-bg-blur pb-[9px] shadow-md',
+          'relative z-10 rounded-3xl border border-components-chat-input-border bg-components-panel-bg-blur pb-[9px]',
           isDragActive && 'border border-dashed border-components-option-card-option-selected-border',
           disabled && 'pointer-events-none border-components-panel-border opacity-50 shadow-none',
         )}
       >
-        <div className='relative max-h-[158px] overflow-y-auto overflow-x-hidden px-[9px] pt-[9px]'>
+        <div className='relative max-h-[158px] overflow-y-auto overflow-x-hidden px-3 pt-2'>
           <FileListInChatInput fileConfig={visionConfig!} />
           <div
             ref={wrapperRef}
@@ -211,7 +215,7 @@ const ChatInputArea = ({
                 onDrop={handleDropFile}
               />
             </div>
-            <div className='mt-1 flex justify-end px-[9px]'>
+            <div className='mt-1 flex justify-end'>
               {operation}
             </div>
           </div>

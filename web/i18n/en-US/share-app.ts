@@ -12,7 +12,7 @@ const translation = {
     pinnedTitle: 'Pinned',
     unpinnedTitle: 'Recent',
     newChatDefaultName: 'New conversation',
-    resetChat: 'Reset conversation',
+    resetChat: 'Start new chat',
     viewChatSettings: 'View chat settings',
     poweredBy: 'Powered by',
     prompt: 'Prompt',

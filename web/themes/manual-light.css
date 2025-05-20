@@ -93,5 +93,5 @@ html[data-theme="light"]:not(#fake-id) {
   --color-components-chat-input-border: #10182824 !important; /* Gray */
 
   /* Sidebar */
-  --color-sidebar-bg: #f2f2f2 !important; 
+  --color-sidebar-bg: #f4f4f4 !important; 
 }

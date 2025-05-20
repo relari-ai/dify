@@ -31,7 +31,7 @@
     }
 
     .action-btn.action-btn-active {
-        @apply text-text-accent bg-state-accent-active hover:bg-state-accent-active-alt
+        @apply text-text-secondary bg-state-base-hover hover:bg-state-base-hover
     }
 
     .action-btn.action-btn-disabled {

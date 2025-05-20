@@ -44,7 +44,7 @@ const Operation: FC<Props> = ({
         onClick={() => setOpen(v => !v)}
       >
         <div className={cn('flex cursor-pointer items-center rounded-lg p-1.5 pl-2 text-text-secondary hover:bg-state-base-hover', open && 'bg-state-base-hover')}>
-          <div className='system-md-semibold'>{title}</div>
+          <div className='system-md-regular'>{title}</div>
           <RiArrowDownSLine className='h-4 w-4 ' />
         </div>
       </PortalToFollowElemTrigger>

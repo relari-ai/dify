@@ -6,8 +6,8 @@ import {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
-  RiClipboardLine,
-  RiResetLeftLine,
+  RiFileCopyLine,
+  RiLoopRightLine,
   RiThumbDownLine,
   RiThumbUpLine,
 } from '@remixicon/react'
@@ -126,11 +126,11 @@ const Operation: FC<OperationProps> = ({
               copy(content)
               Toast.notify({ type: 'success', message: t('common.actionMsg.copySuccessfully') })
             }}>
-              <RiClipboardLine className='h-4 w-4' />
+              <RiFileCopyLine className='h-4 w-4' />
             </ActionButton>
             {!noChatInput && (
               <ActionButton onClick={() => onRegenerate?.(item)}>
-                <RiResetLeftLine className='h-4 w-4' />
+                <RiLoopRightLine className='h-4 w-4' />
               </ActionButton>
             )}
             {(config?.supportAnnotation && config.annotation_reply?.enabled) && (

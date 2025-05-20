@@ -83,7 +83,7 @@ const ChatWithHistory: FC<ChatWithHistoryProps> = ({
         <HeaderInMobile />
       )}
       <div className={cn('relative grow p-2', isMobile && 'h-[calc(100%_-_56px)] p-0')}>
-        {isSidebarCollapsed && (
+        {/* {isSidebarCollapsed && (
           <div
             className={cn(
               'absolute top-0 z-20 flex h-full w-[256px] flex-col p-2 transition-all duration-500 ease-in-out',
@@ -94,7 +94,7 @@ const ChatWithHistory: FC<ChatWithHistoryProps> = ({
           >
             <Sidebar isPanel />
           </div>
-        )}
+        )} */}
         <div className={cn('flex h-full flex-col overflow-hidden border-[0,5px] border-components-panel-border-subtle bg-chatbot-bg', isMobile ? 'rounded-t-2xl' : '')}>
           {!isMobile && <Header />}
           {appChatListDataLoading && (

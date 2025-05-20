@@ -58,7 +58,7 @@ const translation = {
       title: 'Follow-up',
       description: 'Setting up next questions suggestion can give users a better chat.',
       resDes: '3 suggestions for user next question.',
-      tryToAsk: 'Try to ask',
+      tryToAsk: 'Ask a follow-up',
     },
     moreLikeThis: {
       title: 'More like this',

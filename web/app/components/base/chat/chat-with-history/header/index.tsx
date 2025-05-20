@@ -1,15 +1,14 @@
 import { useCallback, useState } from 'react'
 import {
-  RiEditBoxLine,
+  RiChatNewLine,
   RiLayoutRight2Line,
-  RiResetLeftLine,
 } from '@remixicon/react'
 import { useTranslation } from 'react-i18next'
 import {
   useChatWithHistoryContext,
 } from '../context'
 import Operation from './operation'
-import ActionButton, { ActionButtonState } from '@/app/components/base/action-button'
+import ActionButton from '@/app/components/base/action-button'
 import AppIcon from '@/app/components/base/app-icon'
 import Tooltip from '@/app/components/base/tooltip'
 import ViewFormDropdown from '@/app/components/base/chat/chat-with-history/inputs-form/view-form-dropdown'
@@ -73,11 +72,13 @@ const Header = () => {
   return (
     <>
       <div className='flex h-14 shrink-0 items-center justify-between p-3'>
-        <div className={cn('flex items-center gap-1 transition-all duration-200 ease-in-out', !isSidebarCollapsed && 'user-select-none opacity-0')}>
-          <ActionButton className={cn(!isSidebarCollapsed && 'cursor-default')} size='l' onClick={() => handleSidebarCollapse(false)}>
-            <RiLayoutRight2Line className='h-[18px] w-[18px]' />
-          </ActionButton>
-          <div className='mr-1 shrink-0'>
+        <div className={cn('flex items-center gap-1 transition-all duration-200 ease-in-out', !isSidebarCollapsed && 'user-select-none')}>
+          {isSidebarCollapsed && (
+            <ActionButton className={cn('mr-4', !isSidebarCollapsed && 'cursor-default')} size='l' onClick={() => handleSidebarCollapse(false)}>
+              <RiLayoutRight2Line className='h-[18px] w-[18px]' />
+            </ActionButton>
+          )}
+          <div className='mr-4 shrink-0'>
             <AppIcon
               size='large'
               iconType={appData?.site.icon_type}
@@ -86,9 +87,8 @@ const Header = () => {
               imageUrl={appData?.site.icon_url}
             />
           </div>
-          {!currentConversationId && (
-            <div className={cn('system-md-semibold grow truncate text-text-secondary')}>{appData?.site.title}</div>
-          )}
+          <div className={cn('system-lg-regular grow truncate text-text-secondary')}>{appData?.site.title}</div>
+
           {currentConversationId && currentConversationItem && isSidebarCollapsed && (
             <>
               <div className='p-1 text-divider-deep'>/</div>
@@ -103,7 +103,7 @@ const Header = () => {
               />
             </>
           )}
-          <div className='flex items-center px-1'>
+          {/* <div className='flex items-center px-1'>
             <div className='h-[14px] w-px bg-divider-regular'></div>
           </div>
           {isSidebarCollapsed && (
@@ -122,7 +122,7 @@ const Header = () => {
                 </ActionButton>
               </div>
             </Tooltip>
-          )}
+          )} */}
         </div>
         <div className='flex items-center gap-1'>
           {currentConversationId && (
@@ -130,7 +130,7 @@ const Header = () => {
               popupContent={t('share.chat.resetChat')}
             >
               <ActionButton size='l' onClick={handleNewConversation}>
-                <RiResetLeftLine className='h-[18px] w-[18px]' />
+                <RiChatNewLine className='h-[18px] w-[18px]' />
               </ActionButton>
             </Tooltip>
           )}

@@ -111,17 +111,17 @@ const Answer: FC<AnswerProps> = ({
     <div className='mb-2 flex last:mb-0'>
       <div className='relative h-10 w-10 shrink-0'>
         {answerIcon || <AnswerIcon />}
-        {responding && (
+        {/* {responding && (
           <div className='absolute left-[-3px] top-[-3px] flex h-4 w-4 items-center rounded-full border-[0.5px] border-divider-subtle bg-background-section-burn pl-[6px] shadow-xs'>
             <LoadingAnim type='avatar' />
           </div>
-        )}
+        )} */}
       </div>
-      <div className='chat-answer-container group ml-4 w-0 grow pb-4' ref={containerRef}>
+      <div className='chat-answer-container group ml-2 w-0 grow pb-4' ref={containerRef}>
         <div className={cn('group relative pr-10', chatAnswerContainerInner)}>
           <div
             ref={contentRef}
-            className={cn('body-lg-regular relative inline-block max-w-full rounded-2xl bg-chat-bubble-bg px-4 py-3 text-text-primary', workflowProcess && 'w-full')}
+            className={cn('body-lg-regular relative inline-block max-w-full rounded-2xl bg-chat-bubble-bg px-4 py-2 text-text-primary', workflowProcess && 'w-full')}
           >
             {
               !responding && (
@@ -147,8 +147,8 @@ const Answer: FC<AnswerProps> = ({
                 />
               )
             }
-            {/** Hide workflow steps by it's settings in siteInfo */}
-            {
+            {/** HIDING EVERYTHING IF HIDE WORKFLOW STEPS BY COMMENTING OUT THE FOLLOWING CODE */}
+            {/* {
               workflowProcess && hideProcessDetail && appData && (
                 <WorkflowProcessItem
                   data={workflowProcess}
@@ -157,11 +157,11 @@ const Answer: FC<AnswerProps> = ({
                   readonly={!appData.site.show_workflow_steps}
                 />
               )
-            }
+            } */}
             {
               responding && !content && !hasAgentThoughts && (
                 <div className='flex h-5 w-6 items-center justify-center'>
-                  <LoadingAnim type='text' />
+                  <LoadingAnim type='pulse' />
                 </div>
               )
             }

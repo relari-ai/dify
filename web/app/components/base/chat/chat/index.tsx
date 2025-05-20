@@ -28,8 +28,6 @@ import { ChatContextProvider } from './context'
 import type { InputForm } from './type'
 import cn from '@/utils/classnames'
 import type { Emoji } from '@/app/components/tools/types'
-import Button from '@/app/components/base/button'
-import { StopCircle } from '@/app/components/base/icons/src/vender/solid/mediaAndDevices'
 import AgentLogModal from '@/app/components/base/agent-log-modal'
 import PromptLogModal from '@/app/components/base/prompt-log-modal'
 import { useStore as useAppStore } from '@/app/components/app/store'
@@ -235,7 +233,7 @@ const Chat: FC<ChatProps> = ({
           {chatNode}
           <div
             ref={chatContainerInnerRef}
-            className={cn('w-full', !noSpacing && 'px-8', chatContainerInnerClassName)}
+            className={cn('w-full', !noSpacing && 'px-4', chatContainerInnerClassName)}
           >
             {
               chatList.map((item, index) => {
@@ -281,7 +279,7 @@ const Chat: FC<ChatProps> = ({
             ref={chatFooterInnerRef}
             className={cn('relative', chatFooterInnerClassName)}
           >
-            {
+            {/* {
               !noStopResponding && isResponding && (
                 <div className='mb-2 flex justify-center'>
                   <Button onClick={onStopResponding}>
@@ -290,7 +288,7 @@ const Chat: FC<ChatProps> = ({
                   </Button>
                 </div>
               )
-            }
+            } */}
             {
               hasTryToAsk && (
                 <TryToAsk
@@ -311,6 +309,7 @@ const Chat: FC<ChatProps> = ({
                   visionConfig={config?.file_upload}
                   speechToTextConfig={config?.speech_to_text}
                   onSend={onSend}
+                  onStopResponding={onStopResponding}
                   inputs={inputs}
                   inputsForm={inputsForm}
                   theme={themeBuilder?.theme}
